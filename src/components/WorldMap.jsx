@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { worldMap } from '../data/worldMap';
 
 const WorldMap = () => {
@@ -36,7 +36,7 @@ const WorldMap = () => {
                 ))}
             </div>
             <div className="controls">
-                <button onClick={() => movePlayer('up')}>Up</button>
+                <button onClick={() => movePlayer('up')}>Вверх</button>
                 <button onClick={() => movePlayer('down')}>Down</button>
                 <button onClick={() => movePlayer('left')}>Left</button>
                 <button onClick={() => movePlayer('right')}>Right</button>
