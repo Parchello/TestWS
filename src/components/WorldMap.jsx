@@ -1,6 +1,25 @@
 import { useState } from 'react';
 import { worldMap } from '../data/worldMap';
 
+const getTileClass = (tile) => {
+    switch (tile) {
+        case 'F':
+            return 'forest'; // Ліс
+        case 'M':
+            return 'mountain'; // Гори
+        case 'G':
+            return 'grassland'; // Поле
+        case 'V':
+            return 'village'; // Село
+        case 'S':
+            return 'start';
+        case 'P':
+            return 'player';// Стартова точка
+        default:
+            return '';
+    }
+};
+
 const WorldMap = () => {
     const [playerPosition, setPlayerPosition] = useState({ row: 0, col: 0 });
 
@@ -26,7 +45,7 @@ const WorldMap = () => {
                             return (
                                 <div
                                     key={colIndex}
-                                    className={`map-cell ${isPlayerHere ? 'player' : ''}`}
+                                    className={`map-cell ${getTileClass(cell)} ${isPlayerHere ? 'player' : ''}`}
                                 >
                                     {isPlayerHere ? 'P' : cell}
                                 </div>
@@ -36,7 +55,7 @@ const WorldMap = () => {
                 ))}
             </div>
             <div className="controls">
-                <button onClick={() => movePlayer('up')}>Вверх</button>
+                <button onClick={() => movePlayer('up')}>Up</button>
                 <button onClick={() => movePlayer('down')}>Down</button>
                 <button onClick={() => movePlayer('left')}>Left</button>
                 <button onClick={() => movePlayer('right')}>Right</button>

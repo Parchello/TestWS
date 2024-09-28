@@ -29,11 +29,36 @@
   align-items: center;
   font-size: 24px;
   margin: 2px;
-  background-color: #f0f0f0;
 }
 
 .player {
   background-color: yellow;
+}
+
+/* Тайли */
+.forest {
+  background-color: green;
+  color: white;
+}
+
+.mountain {
+  background-color: gray;
+  color: white;
+}
+
+.grassland {
+  background-color: lightgreen;
+  color: black;
+}
+
+.village {
+  background-color: sienna;
+  color: white;
+}
+
+.start {
+  background-color: blue;
+  color: white;
 }
 
 .controls {
