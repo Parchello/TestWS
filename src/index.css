@@ -1,3 +1,9 @@
+
+* {
+  box-sizing: border-box; /* Включити padding і border в ширину */
+}
+
+
 .App {
   text-align: center;
   font-family: 'Arial', sans-serif;
