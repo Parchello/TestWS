@@ -3,7 +3,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {heroHealth, heroLevel} from "../redux/slices/HeroSlice.js";
 
 
-const Battle = ({ player, setPlayer, enemy, setEnemy }) => {
+const Battle = ({ setPlayer, enemy, setEnemy}) => {
+    const {playerInfo} = useSelector((state) => state.hero);
+    const {enemyInfo} = useSelector((state) => state.enemy);
+
     const [gameOver, setGameOver] = useState(false);
     const [winner, setWinner] = useState('');
     const dispatch = useDispatch();
