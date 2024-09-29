@@ -11,7 +11,7 @@ const StartPage = () => {
     return (
         <div>
             <div className="App">
-                <h1>RPG Game</h1>
+                <h1>RPG ame</h1>
                 <div className="game-area">
                     <Player/>
                     <Enemy enemy={enemy}/>
