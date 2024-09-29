@@ -4,7 +4,6 @@ import {useSelector} from "react-redux";
 
 const Enemy = () => {
   const {enemyInfo} = useSelector((state) => state.enemy);
-    console.log(enemyInfo)
     return (
         <div className="enemy">
             <h2>Enemy: {enemyInfo[0].name}</h2>
