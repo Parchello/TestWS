@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
     display: flex;
+    justify-content: space-between; /* Розміщуємо блоки по краях */
     align-items: center;
     background-color: rgba(245, 245, 245, 0.6); /* Прозорий фон */
     padding: 10px 20px; /* Відступи */
@@ -10,6 +11,12 @@ export const HeaderContainer = styled.header`
     left: 0; /* Розмістити зліва */
     width: 100%; /* Ширина 100% */
     z-index: 1000; /* Забезпечити, що заголовок буде поверх інших елементів */
+`;
+
+export const UnitBox = styled.div`
+    display: flex;
+    align-items: center;
+    
 `;
 
 export const AvatarIcon = styled.img`
