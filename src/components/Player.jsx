@@ -1,18 +1,24 @@
 
-import { useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {getPlayerParams} from "../redux/slices/HeroSlice.js";
 
 
 const Player = () => {
- const {playerInfo} = useSelector((state) => state.hero);
+    const dispatch = useDispatch();
+ const {name, health, attack, level} = useSelector((state) => state.hero.playerInfo);
 
+ useEffect(() => {
+     dispatch(getPlayerParams())
+ },[dispatch])
 
 
     return (
         <div className="player">
-            <h2>Player: {playerInfo.name}</h2>
-            <p>Health: {playerInfo.health}</p>
-            <p>Attack: {playerInfo.attack}</p>
-            <p>Level: {playerInfo.level}</p>
+            <h2>Player: {name}</h2>
+            <p>Health: {health}</p>
+            <p>Attack: {attack}</p>
+            <p>Level: {level}</p>
         </div>
     );
 };

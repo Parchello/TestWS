@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import Player from '../components/Player.jsx';
+
 import Enemy from '../components/Enemy';
 import Battle from '../components/Battle';
 import WorldMap from '../components/WorldMap';
@@ -11,9 +11,8 @@ const StartPage = () => {
     return (
         <div>
             <div className="App">
-                <h1>RPG ame</h1>
+
                 <div className="game-area">
-                    <Player/>
                     <Enemy enemy={enemy}/>
                 </div>
                 <Battle player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy}/>

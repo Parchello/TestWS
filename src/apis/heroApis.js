@@ -1,0 +1,1 @@
+export const PLAYER_URL = "http://localhost:3333/api/player";
