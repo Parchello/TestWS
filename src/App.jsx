@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Player from './components/Player';
 import Enemy from './components/Enemy';
 import Battle from './components/Battle';
@@ -13,7 +13,7 @@ function App() {
         <div className="App">
             <h1>RPG Game</h1>
             <div className="game-area">
-                <Player player={player} />
+                <Player  />
                 <Enemy enemy={enemy} />
             </div>
             <Battle player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy} />

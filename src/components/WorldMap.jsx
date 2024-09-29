@@ -4,17 +4,17 @@ import { worldMap } from '../data/worldMap';
 const getTileClass = (tile) => {
     switch (tile) {
         case 'F':
-            return 'forest'; // Ліс
+            return 'forest';
         case 'M':
-            return 'mountain'; // Гори
+            return 'mountain';
         case 'G':
-            return 'grassland'; // Поле
+            return 'grassland';
         case 'V':
-            return 'village'; // Село
+            return 'village';
         case 'S':
             return 'start';
         case 'P':
-            return 'player';// Стартова точка
+            return 'player';
         default:
             return '';
     }

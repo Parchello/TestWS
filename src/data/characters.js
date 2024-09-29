@@ -1,4 +1,4 @@
-// Данні для гравця
+
 export const playerData = {
     name: 'Hero',
     health: 100,
@@ -9,7 +9,7 @@ export const playerData = {
     experience: 0,
 };
 
-// Дані для ворогів
+
 export const enemiesData = [
     {
         id: 1,
@@ -18,6 +18,7 @@ export const enemiesData = [
         attack: 5,
         defense: 2,
         experienceReward: 20,
+        reward:["stick"]
     },
     {
         id: 2,
@@ -26,6 +27,7 @@ export const enemiesData = [
         attack: 12,
         defense: 5,
         experienceReward: 50,
+        reward:["crown"]
     },
     {
         id: 3,

@@ -1,11 +1,15 @@
-import React from 'react';
+import {useSelector} from "react-redux";
 
-const Enemy = ({ enemy }) => {
+
+
+const Enemy = () => {
+  const {enemyInfo} = useSelector((state) => state.enemy);
+    console.log(enemyInfo)
     return (
         <div className="enemy">
-            <h2>Enemy: {enemy.name}</h2>
-            <p>Health: {enemy.health}</p>
-            <p>Attack: {enemy.attack}</p>
+            <h2>Enemy: {enemyInfo[0].name}</h2>
+            <p>Health: {enemyInfo[0].health}</p>
+            <p>Attack: {enemyInfo[0].attack}</p>
         </div>
     );
 };
