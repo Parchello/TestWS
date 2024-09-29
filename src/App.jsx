@@ -1,24 +1,17 @@
-import { useState } from 'react';
-import Player from './components/Player';
-import Enemy from './components/Enemy';
-import Battle from './components/Battle';
-import WorldMap from './components/WorldMap';
-import { playerData, enemiesData } from './data/characters';
+
+import {Route, Routes} from "react-router-dom";
+import StartPage from "./Pages/StartPage.jsx";
+import VillagePage from "./Pages/VillagePage.jsx";
+import HomePage from "./Pages/HomePage.jsx";
 
 function App() {
-    const [player, setPlayer] = useState(playerData);
-    const [enemy, setEnemy] = useState(enemiesData[0]);
 
     return (
-        <div className="App">
-            <h1>RPG Game</h1>
-            <div className="game-area">
-                <Player  />
-                <Enemy enemy={enemy} />
-            </div>
-            <Battle player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy} />
-            <WorldMap />
-        </div>
+        <Routes>
+            <Route path="/" element={<HomePage/>}/>
+            <Route path="/start" element={<StartPage/>}/>
+            <Route path="/village" element={<VillagePage/>}/>
+        </Routes>
     );
 }
 
