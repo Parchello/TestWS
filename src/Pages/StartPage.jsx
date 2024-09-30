@@ -7,7 +7,7 @@ const StartPage = () => {
     const [player, setPlayer] = useState(playerData);
     const [enemy, setEnemy] = useState(enemiesData[2]);
     return (
-        <div>
+        <div style={{marginTop: '120px'}}>
             <div className="App">
                 <Battle player={player} setPlayer={setPlayer} enemy={enemy} setEnemy={setEnemy}/>
                 <WorldMap/>

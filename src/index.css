@@ -3,6 +3,13 @@
   box-sizing: border-box; /* Включити padding і border в ширину */
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Забороняємо скрол */
+}
+
 
 .App {
   text-align: center;

@@ -3,6 +3,7 @@ import StartPage from "./Pages/StartPage.jsx";
 import VillagePage from "./Pages/VillagePage.jsx";
 import HomePage from "./Pages/HomePage/HomePage.jsx";
 import Layout from "./components/Layout/Layout.jsx";
+import CastlePage from "./Pages/CastlePage/CastlePage.jsx";
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
 			<Route element={<Layout/>}>
 				<Route path="/start" element={<StartPage/>}/>
 				<Route path="/village" element={<VillagePage/>}/>
+				<Route path="/castle" element={<CastlePage/>}/>
 			</Route>
 		</Routes>
 	);
