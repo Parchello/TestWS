@@ -4,7 +4,7 @@ export const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between; /* Розміщуємо блоки по краях */
     align-items: center;
-    background-color: rgba(245, 245, 245, 0.6); /* Прозорий фон */
+    background-color: rgba(138, 138, 138, 0.6); /* Прозорий фон */
     padding: 10px 20px; /* Відступи */
     position: fixed; /* Зафіксувати заголовок */
     top: 0; /* Розмістити на верху */
@@ -24,6 +24,23 @@ export const AvatarIcon = styled.img`
   height: 75px; /* Встановіть висоту вашого логотипу */
   border-radius: 50%; /* Кругла форма */
   margin-right: 10px; /* Відступ між логотипом і текстом */
+`;
+
+export const CastleIcon = styled.img`
+  width: 75px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* Ефект при наведенні */
+  &:hover {
+    transform: scale(1.1); /* Трохи збільшується */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Додається тінь */
+  }
+
+  /* Ефект при кліку */
+  &:active {
+    transform: scale(1.05); /* Зменшене збільшення при кліку */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7); /* Тінь стає більш насиченою */
+  }
 `;
 
 export const AttributesList = styled.ul`
