@@ -3,14 +3,17 @@ import { Link } from "react-router-dom";
 
 export const HomePageContainer = styled.div`
     display: flex;
+	flex-direction: column;
     justify-content: center;
     align-items: center;
+	gap: 20px;
     height: 100vh;
     background-color: ${props => props.theme.colors.mainBg};
 `;
 
 export const StartButton = styled(Link)`
   display: inline-block;
+	width: 300px;
   padding: 20px 40px;
   font-size: 2rem;
   color: white;
@@ -24,6 +27,7 @@ export const StartButton = styled(Link)`
 
   &:hover {
     background-color: #0056b3;
+	  color: ${({ children }) => (children === "QUIT" ? "red" : "chartreuse")};
     cursor: pointer;
   }
 `;
