@@ -16,7 +16,7 @@ const Header = () => {
 	const isCastlePage = location.pathname === "/castle";
 
 	const dispatch = useDispatch();
-	const playerInfo = useSelector((state) => state.hero.playerInfo);
+	const playerInfo = useSelector((state) => state.hero.players.length > 0 ? state.hero.players[0] : null);
 	const enemyInfo = useSelector((state) => state.enemy.enemyInfo);
 
 	useEffect(() => {
@@ -29,11 +29,14 @@ const Header = () => {
 	return (
 		<HeaderContainer>
 			<UnitBox><AvatarIcon src={heroAvatar} alt="Avatar"/>
-				<AttributesList>
-					<AttributesItem>Health: {playerInfo.health}</AttributesItem>
-					<AttributesItem>Attack: {playerInfo.attack}</AttributesItem>
-					<AttributesItem>Level: {playerInfo.level}</AttributesItem>
-				</AttributesList></UnitBox>
+				{playerInfo &&
+					<AttributesList>
+						<AttributesItem>Health: {playerInfo.health}</AttributesItem>
+						<AttributesItem>Attack: {playerInfo.attack}</AttributesItem>
+						<AttributesItem>Level: {playerInfo.level}</AttributesItem>
+					</AttributesList>
+				}
+			</UnitBox>
 
 			<Link to={isCastlePage ? "/start" : "/castle"}>
 				<div><CastleIcon style={{width: "75px"}} src={isCastlePage ? mapIcon : castleIcon } alt={isCastlePage ? "Map" : "Castle"}/>

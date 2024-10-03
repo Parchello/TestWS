@@ -1,7 +1,7 @@
 import {useState} from 'react';
-import Battle from '../components/Battle';
-import WorldMap from '../components/WorldMap';
-import {playerData, enemiesData} from '../data/characters';
+import Battle from '../../components/Battle.jsx';
+import WorldMap from '../../components/WorldMap.jsx';
+import {playerData, enemiesData} from '../../data/characters.js';
 // import Hero from "../components/Hero/Hero.jsx";
 
 const StartPage = () => {
