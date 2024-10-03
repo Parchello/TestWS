@@ -2,20 +2,38 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {PLAYER_URL} from "../../apis/heroApis.js";
 
 const initialState = {
-	playerInfo: {},
+	players: [],
 	isLoading: false,
 	error: null,
 }
 
-export const getPlayerParams = createAsyncThunk("hero/getPlayerParams", async () => {
+export const getPlayerParams = createAsyncThunk(
+	"hero/getPlayerParams", async () => {
 	try {
 		const res = await fetch(PLAYER_URL)
-		const data = await res.json();
-		return data[0];
+		return await res.json();
 	} catch (error) {
 		console.log(error.message);
 	}
 })
+
+export const createNewPlayer = createAsyncThunk(
+	"hero/createNewPlayer",
+	async (newPlayer) => {
+		try {
+			const response = await fetch(PLAYER_URL, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(newPlayer),
+			});
+			return await response.json();
+		} catch (error) {
+			console.log(error.message);
+		}
+	}
+);
 
 
 const heroSlice = createSlice({
@@ -23,10 +41,10 @@ const heroSlice = createSlice({
 	initialState,
 	reducers: {
 		heroHealth: (state, action) => {
-			state.playerInfo.health = action.payload;
+			state.players[0].health = action.payload;
 		},
 		heroLevel: (state, action) => {
-			state.playerInfo.level = action.payload;
+			state.players[0].level = action.payload;
 		},
 	},
 	extraReducers: (builder) => {
@@ -36,9 +54,19 @@ const heroSlice = createSlice({
 			})
 			.addCase(getPlayerParams.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.playerInfo = action.payload;
+				state.players = action.payload;
 			})
 			.addCase(getPlayerParams.rejected, (state) => {
+				state.isLoading = false;
+			})
+			.addCase(createNewPlayer.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(createNewPlayer.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.players.push(action.payload);
+			})
+			.addCase(createNewPlayer.rejected, (state) => {
 				state.isLoading = false;
 			})
 	}})

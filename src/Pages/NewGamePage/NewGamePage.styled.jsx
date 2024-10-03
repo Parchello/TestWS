@@ -7,7 +7,7 @@ export const GameContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #f0f0f0;
+    background-color: ${props => props.theme.colors.mainBg};
   padding: 20px;
   box-sizing: border-box;
 
