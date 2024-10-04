@@ -1,22 +1,28 @@
-import { useState } from 'react';
+import  { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { worldMap } from '../data/worldMap';
 
-const getTileClass = (tile) => {
+// Імпорт зображень
+import forestImg from '../assets/forest.png';
+import mountainImg from '../assets/mountain.png';
+import grasslandImg from '../assets/grassland.png';
+import villageImg from '../assets/village.png';
+import startImg from '../assets/start.png';
+
+const getTileImage = (tile) => {
     switch (tile) {
         case 'F':
-            return 'forest';
+            return forestImg; // Ліс
         case 'M':
-            return 'mountain';
+            return mountainImg; // Гори
         case 'G':
-            return 'grassland';
+            return grasslandImg; // Поле
         case 'V':
-            return 'village';
+            return villageImg; // Село
         case 'S':
-            return 'start';
-        case 'P':
-            return 'player';
+            return startImg; // Стартова точка
         default:
-            return '';
+            return null;
     }
 };
 
@@ -42,12 +48,17 @@ const WorldMap = () => {
                     <div key={rowIndex} className="map-row">
                         {row.map((cell, colIndex) => {
                             const isPlayerHere = playerPosition.row === rowIndex && playerPosition.col === colIndex;
+                            const tileType = cell; // Тип тайлу
+
                             return (
-                                <div
-                                    key={colIndex}
-                                    className={`map-cell ${getTileClass(cell)} ${isPlayerHere ? 'player' : ''}`}
-                                >
-                                    {isPlayerHere ? 'P' : cell}
+                                <div key={colIndex} className={`map-cell ${isPlayerHere ? 'player' : ''}`}>
+                                    {isPlayerHere ? (
+                                        <span role="img" aria-label="player">🧍</span> // Іконка гравця
+                                    ) : (
+                                        <Link to={`/location/${tileType}`}>
+                                            <img src={getTileImage(cell)} alt={cell} className="tile-image" />
+                                        </Link>
+                                    )}
                                 </div>
                             );
                         })}
