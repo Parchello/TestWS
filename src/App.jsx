@@ -7,6 +7,8 @@ import CastlePage from "./Pages/CastlePage/CastlePage.jsx";
 import WelcomePage from "./Pages/WelcomePage/WelcomePage.jsx";
 import OptionsPage from "./Pages/OptionsPage/OptionsPage.jsx";
 import NewGamePage from "./Pages/NewGamePage/NewGamePage.jsx";
+import HeroPage from "./Pages/HeroPage/HeroPage.jsx";
+import IntroPage from "./Pages/IntroPage/IntroPage.jsx";
 
 function App() {
 	return (
@@ -20,6 +22,8 @@ function App() {
 				<Route path="/home" element={<HomePage />} />
 				<Route path="/newgame" element={<NewGamePage />} />
 				<Route path="/options" element={<OptionsPage />} />
+				<Route path="/intro" element={<IntroPage />} />
+				<Route path="/hero" element={<HeroPage />} />
 			</Route>
 		</Routes>
 	);

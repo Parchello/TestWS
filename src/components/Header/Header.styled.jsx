@@ -58,3 +58,6 @@ export const AttributesItem = styled.li`
   margin: 2px 0; /* Відступи між елементами списку */
 `;
 
+
+
+
