@@ -47,7 +47,7 @@ export const WIDTHS = [
 export const TEXTS = [
 	"ZZZZzzz...",
 	"Greetings, wanderer...",
-	"Who are You?",
+	"Who are You??",
 	"I am Jin, the spirit of Universe.",
 	"Why are You here?",
 	"The world is in peril! You have been chosen.",
