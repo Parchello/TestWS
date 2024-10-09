@@ -25,7 +25,7 @@ const NewGamePage = () => {
 
 		dispatch(createNewPlayer(newPlayer));
 
-		navigate("/start");
+		navigate("/intro");
 		console.log(playerName);
 	}
 

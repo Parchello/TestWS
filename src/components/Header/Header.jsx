@@ -1,4 +1,4 @@
-import heroAvatar from "../../assets/hero-avatar.jpg";
+import heroAvatar from "../../assets/hero-avatar.png";
 import goblinAvatar from "../../assets/goblin-avatar.jpg";
 import castleIcon from "../../assets/castle-icon.png";
 import mapIcon from "../../assets/map-icon.png";
@@ -28,7 +28,7 @@ const Header = () => {
 	}, [dispatch])
 	return (
 		<HeaderContainer>
-			<UnitBox><AvatarIcon src={heroAvatar} alt="Avatar"/>
+			<UnitBox><Link to={"/hero"}><AvatarIcon src={heroAvatar} alt="Avatar"/></Link>
 				{playerInfo &&
 					<AttributesList>
 						<AttributesItem>Health: {playerInfo.health}</AttributesItem>
