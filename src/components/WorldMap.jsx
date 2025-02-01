@@ -80,10 +80,11 @@ const WorldMap = () => {
                 playerPosition.row === rowIndex &&
                 playerPosition.col === colIndex;
               const tileType = cell; // Тип тайлу
+              const uniqueId = `${rowIndex}-${colIndex}`;
 
               return (
                 <div
-                  key={colIndex}
+                  key={uniqueId}
                   className={`map-cell ${isPlayerHere ? "player" : ""}`}
                 >
                   {isPlayerHere ? (
@@ -91,7 +92,13 @@ const WorldMap = () => {
                       🧍
                     </span> // Іконка гравця
                   ) : (
-                    <Link to={`/location/${tileType}`}>
+                    <Link
+                      to={
+                        tileType === "V"
+                          ? `/village/${uniqueId}`
+                          : `/location/${tileType}`
+                      }
+                    >
                       <img
                         src={getTileImage(cell)}
                         alt={cell}
