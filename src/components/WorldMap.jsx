@@ -8,6 +8,7 @@ import mountainImg from "../assets/mountain.png";
 import grasslandImg from "../assets/grassland.png";
 import villageImg from "../assets/village.png";
 import startImg from "../assets/start.png";
+import waterImg from "../assets/mapWater.jpg";
 
 const getTileImage = (tile) => {
   switch (tile) {
@@ -21,13 +22,15 @@ const getTileImage = (tile) => {
       return villageImg; // Село
     case "S":
       return startImg; // Стартова точка
+    case "W":
+      return waterImg; //вода
     default:
       return null;
   }
 };
 
 const WorldMap = () => {
-  const [playerPosition, setPlayerPosition] = useState({ row: 0, col: 0 });
+  const [playerPosition, setPlayerPosition] = useState({ row: 1, col: 1 });
 
   const movePlayer = (direction) => {
     setPlayerPosition((prevPosition) => {
@@ -57,6 +60,7 @@ const WorldMap = () => {
   return (
     <div>
       <h2>World Map</h2>
+
       <div className="map">
         {worldMap.map((row, rowIndex) => (
           <div key={rowIndex} className="map-row">
@@ -90,6 +94,7 @@ const WorldMap = () => {
           </div>
         ))}
       </div>
+      {/* <h3>{cell}</h3> */}
       <div className="controls">
         <button onClick={() => movePlayer("up")}>Up</button>
         <button onClick={() => movePlayer("down")}>Down</button>
