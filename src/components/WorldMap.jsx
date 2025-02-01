@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { worldMap } from "../data/worldMap";
+import { BtnContainer, MovingBtn } from "./WorldMap.styled";
 
 // Імпорт зображень
 import forestImg from "../assets/forest.png";
@@ -95,12 +96,12 @@ const WorldMap = () => {
         ))}
       </div>
       {/* <h3>{cell}</h3> */}
-      <div className="controls">
-        <button onClick={() => movePlayer("up")}>Up</button>
-        <button onClick={() => movePlayer("down")}>Down</button>
-        <button onClick={() => movePlayer("left")}>Left</button>
-        <button onClick={() => movePlayer("right")}>Right</button>
-      </div>
+      <BtnContainer className="controls">
+        <MovingBtn onClick={() => movePlayer("up")}>Up</MovingBtn>
+        <MovingBtn onClick={() => movePlayer("left")}>Left</MovingBtn>
+        <MovingBtn onClick={() => movePlayer("down")}>Down</MovingBtn>
+        <MovingBtn onClick={() => movePlayer("right")}>Right</MovingBtn>
+      </BtnContainer>
     </div>
   );
 };
