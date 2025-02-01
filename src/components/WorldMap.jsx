@@ -30,6 +30,8 @@ const getTileImage = (tile) => {
   }
 };
 
+// РУХ ГРАВЦЯ
+
 const WorldMap = () => {
   const [playerPosition, setPlayerPosition] = useState({ row: 1, col: 1 });
 
@@ -44,11 +46,10 @@ const WorldMap = () => {
       if (direction === "left" && col > 0) newCol--;
       if (direction === "right" && col < worldMap[0].length - 1) newCol++;
 
-      // Перевіряємо, чи нова позиція не є водою ("W")
       if (worldMap[newRow][newCol] !== "W") {
-        return { row: newRow, col: newCol }; // Дозволяємо рух
+        return { row: newRow, col: newCol };
       } else {
-        return prevPosition; // Не змінюємо позицію
+        return prevPosition;
       }
     });
   };
