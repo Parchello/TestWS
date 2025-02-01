@@ -1,9 +1,9 @@
-
 * {
   box-sizing: border-box; /* Включити padding і border в ширину */
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -12,7 +12,7 @@ html, body {
 
 .App {
   text-align: center;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 .game-area {
@@ -51,7 +51,7 @@ html, body {
 }
 
 .player {
-  background-color: yellow;
+  background-color: none;
 }
 
 .map-cell a {
