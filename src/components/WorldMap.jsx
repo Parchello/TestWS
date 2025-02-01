@@ -36,11 +36,20 @@ const WorldMap = () => {
   const movePlayer = (direction) => {
     setPlayerPosition((prevPosition) => {
       let { row, col } = prevPosition;
-      if (direction === "up" && row > 0) row--;
-      if (direction === "down" && row < worldMap.length - 1) row++;
-      if (direction === "left" && col > 0) col--;
-      if (direction === "right" && col < worldMap[0].length - 1) col++;
-      return { row, col };
+      let newRow = row;
+      let newCol = col;
+
+      if (direction === "up" && row > 0) newRow--;
+      if (direction === "down" && row < worldMap.length - 1) newRow++;
+      if (direction === "left" && col > 0) newCol--;
+      if (direction === "right" && col < worldMap[0].length - 1) newCol++;
+
+      // Перевіряємо, чи нова позиція не є водою ("W")
+      if (worldMap[newRow][newCol] !== "W") {
+        return { row: newRow, col: newCol }; // Дозволяємо рух
+      } else {
+        return prevPosition; // Не змінюємо позицію
+      }
     });
   };
 
