@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import Village1_5 from "../../components/Village/Village1_5";
 import Village2_9 from "../../components/Village/Village2_9";
 import Village3_5 from "../../components/Village/Village3_5";
+import EvilVillage from "../../components/Village/EvilVillage";
+import FireVillage from "../../components/Village/fireVillage";
 
 const VillagePage = () => {
   const { id } = useParams(); // Отримуємо ID села з URL
@@ -15,6 +17,10 @@ const VillagePage = () => {
         return <Village2_9 />;
       case "3-5":
         return <Village3_5 />;
+      case "4-9":
+        return <EvilVillage />;
+      case "5-5":
+        return <FireVillage />;
       default:
         return (
           <div>
