@@ -15,11 +15,11 @@ const VillagePage = () => {
         return <Village1_5 />;
       case "2-9":
         return <Village2_9 />;
-      case "3-5":
+      case "2-19":
         return <Village3_5 />;
-      case "4-9":
+      case "9-16":
         return <EvilVillage />;
-      case "5-5":
+      case "8-2":
         return <FireVillage />;
       default:
         return (

@@ -4,12 +4,12 @@ import { worldMap } from "../data/worldMap";
 import { BtnContainer, MovingBtn } from "./WorldMap.styled";
 
 // Імпорт зображень
-import forestImg from "../assets/forest.png";
-import mountainImg from "../assets/mountain.png";
-import grasslandImg from "../assets/grassland.png";
-import villageImg from "../assets/village.png";
-import startImg from "../assets/start.png";
-import waterImg from "../assets/mapWater.jpg";
+import forestImg from "../assets/groundpixelMap/forest.png";
+import mountainImg from "../assets/groundpixelMap/mountain.png";
+import grasslandImg from "../assets/groundpixelMap/grassland.png";
+import villageImg from "../assets/groundpixelMap/village.png";
+import startImg from "../assets/groundpixelMap/start.png";
+import waterImg from "../assets/groundpixelMap/mapWater.jpg";
 
 const getTileImage = (tile) => {
   switch (tile) {
@@ -75,34 +75,19 @@ const WorldMap = () => {
         {worldMap.map((row, rowIndex) => (
           <div key={rowIndex} className="map-row">
             {row.map((cell, colIndex) => {
-              const isPlayerHere =
-                playerPosition.row === rowIndex &&
-                playerPosition.col === colIndex;
+              const isPlayerHere = playerPosition.row === rowIndex && playerPosition.col === colIndex;
               const tileType = cell; // Тип тайлу
               const uniqueId = `${rowIndex}-${colIndex}`;
 
               return (
-                <div
-                  key={uniqueId}
-                  className={`map-cell ${isPlayerHere ? "player" : ""}`}
-                >
+                <div key={uniqueId} className={`map-cell ${isPlayerHere ? "player" : ""}`}>
                   {isPlayerHere ? (
                     <span role="img" aria-label="player">
                       🧍
                     </span> // Іконка гравця
                   ) : (
-                    <Link
-                      to={
-                        tileType === "V"
-                          ? `/village/${uniqueId}`
-                          : `/location/${tileType}`
-                      }
-                    >
-                      <img
-                        src={getTileImage(cell)}
-                        alt={cell}
-                        className="tile-image"
-                      />
+                    <Link to={tileType === "V" ? `/village/${uniqueId}` : `/location/${tileType}`}>
+                      <img src={getTileImage(cell)} alt={cell} className="tile-image" />
                     </Link>
                   )}
                 </div>
