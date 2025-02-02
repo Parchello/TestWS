@@ -46,7 +46,7 @@ const WorldMap = () => {
       if (direction === "left" && col > 0) newCol--;
       if (direction === "right" && col < worldMap[0].length - 1) newCol++;
 
-      if (worldMap[newRow][newCol] !== "W") {
+      if (worldMap[newRow][newCol] !== "W" && worldMap[newRow][newCol] !== "M") {
         return { row: newRow, col: newCol };
       } else {
         return prevPosition;
