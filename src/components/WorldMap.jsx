@@ -61,7 +61,6 @@ const WorldMap = () => {
       if (event.key === "ArrowLeft") movePlayer("left");
       if (event.key === "ArrowRight") movePlayer("right");
     };
-
     window.addEventListener("keydown", handleKeyPress);
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
