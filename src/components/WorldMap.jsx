@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { worldMap } from "../data/worldMap";
 import { BtnContainer, MovingBtn } from "./WorldMap.styled";
+import StartModal from "../components/StartModal/StartModal";
 
 // Імпорт зображень
 import forestImg from "../assets/groundpixelMap/forest.png";
@@ -34,6 +35,7 @@ const getTileImage = (tile) => {
 
 const WorldMap = () => {
   const [playerPosition, setPlayerPosition] = useState({ row: 1, col: 1 });
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const movePlayer = (direction) => {
     setPlayerPosition((prevPosition) => {
@@ -67,8 +69,18 @@ const WorldMap = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const isFirstVisit = localStorage.getItem("firstVisit");
+
+    if (!isFirstVisit) {
+      setIsModalOpen(true);
+      localStorage.setItem("firstVisit", "true"); // Зберігаємо прапорець, що вікно вже показували
+    }
+  }, []);
+
   return (
     <div>
+      <div>{isModalOpen && <StartModal onClose={() => setIsModalOpen(false)} />}</div>
       <h2>World Map</h2>
 
       <div className="map">
