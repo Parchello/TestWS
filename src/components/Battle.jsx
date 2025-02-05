@@ -1,62 +1,52 @@
-import { useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {heroHealth, heroLevel} from "../redux/slices/HeroSlice.js";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { heroHealth, heroLevel } from "../redux/slices/HeroSlice.js";
+import { enemyHealth } from "../redux/slices/EnemySlice.js";
 
+const Battle = () => {
+  const dispatch = useDispatch();
 
-const Battle = ({ setPlayer, enemy, setEnemy}) => {
-    const {playerInfo} = useSelector((state) => state.hero);
-    const {enemyInfo} = useSelector((state) => state.enemy);
+  const playerInfo = useSelector((state) => state.hero);
+  const enemyInfo = useSelector((state) => state.enemy);
 
-    const [gameOver, setGameOver] = useState(false);
-    const [winner, setWinner] = useState('');
-    const dispatch = useDispatch();
+  const [gameOver, setGameOver] = useState(false);
+  const [winner, setWinner] = useState("");
 
+  if (!enemyInfo || !playerInfo) {
+    return <p>Loading...</p>;
+  }
 
-    const attackEnemy = () => {
-        if (gameOver) return;
+  const attackEnemy = () => {
+    if (gameOver) return;
 
-        setEnemy(prevEnemy => {
-            const newHealth = prevEnemy.health - playerInfo.attack;
-            if (newHealth <= 0) {
-                setGameOver(true);
-                setWinner('Player');
-                const newLevel = playerInfo.level + 1;
-                dispatch(heroLevel(newLevel))
-                // setPlayer(prevPlayer => ({
-                //     ...prevPlayer,
-                //     experience: prevPlayer.experience + prevEnemy.experienceReward,
-                // }));
-            }
-            return {...prevEnemy, health: newHealth};
-        });
+    const newEnemyHealth = enemyInfo.health - playerInfo.attack;
+    dispatch(enemyHealth(newEnemyHealth));
 
-        if (!gameOver && enemy.health - playerInfo.attack > 0) {
-            attackPlayer();
-        }
-    };
+    if (newEnemyHealth <= 0) {
+      setGameOver(true);
+      setWinner("Player");
+      dispatch(heroLevel(playerInfo.level + 1));
+      return;
+    }
 
-    const attackPlayer = () => {
-        setPlayer(prevPlayer => {
-            const newHealth = playerInfo.health - enemy.attack;
-            dispatch(heroHealth(newHealth));
+    setTimeout(() => {
+      attackPlayer(); // Ворог атакує гравця після удару
+    }, 500);
+  };
 
-            if (newHealth <= 0) {
-                setGameOver(true);
-                setWinner('Enemy');
-            }
-            return {...prevPlayer, health: newHealth};
-        });
-    };
+  const attackPlayer = () => {
+    if (gameOver) return;
 
-    return (
-        <div className="battle">
-            {gameOver ? (
-                <h2>{winner} Wins!</h2>
-            ) : (
-                <button onClick={attackEnemy}>Attack Enemy</button>
-            )}
-        </div>
-    );
+    const newPlayerHealth = playerInfo.health - enemyInfo.attack;
+    dispatch(heroHealth(newPlayerHealth));
+
+    if (newPlayerHealth <= 0) {
+      setGameOver(true);
+      setWinner("Enemy");
+    }
+  };
+
+  return <div className="battle">{gameOver ? <h2>{winner} Wins!</h2> : <button onClick={attackEnemy}>Attack Enemy</button>}</div>;
 };
 
 export default Battle;
