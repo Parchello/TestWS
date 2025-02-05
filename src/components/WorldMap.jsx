@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { worldMap } from "../data/worldMap";
+import { worldMap } from "../data/worldmap";
 import { BtnContainer, MovingBtn } from "./WorldMap.styled";
 import StartModal from "../components/StartModal/StartModal";
 
@@ -11,6 +11,7 @@ import grasslandImg from "../assets/groundpixelMap/grassland.png";
 import villageImg from "../assets/groundpixelMap/village.png";
 import startImg from "../assets/groundpixelMap/start.png";
 import waterImg from "../assets/groundpixelMap/mapWater.jpg";
+import dirt from "../assets/groundpixelMap/dirt.png";
 
 const getTileImage = (tile) => {
   switch (tile) {
@@ -26,6 +27,8 @@ const getTileImage = (tile) => {
       return startImg; // Стартова точка
     case "W":
       return waterImg; //вода
+    case "DI":
+      return dirt;
     default:
       return null;
   }
