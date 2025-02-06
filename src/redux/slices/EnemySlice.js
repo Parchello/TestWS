@@ -1,27 +1,11 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ENEMY_URL } from "../../apis/enemyApis.js";
+// src/redux/enemySlice.js
+import { createSlice } from "@reduxjs/toolkit";
+import { enemiesData } from "../../data/characters";
 
 const initialState = {
-  enemyInfo: {},
-  isLoading: false,
-  error: null,
+  enemyInfo: enemiesData[0], // Початковий ворог - перший у списку
   enemyIndex: 0,
 };
-
-export const getEnemyParams = createAsyncThunk("enemy/getEnemyParams", async (_, { getState, rejectWithValue }) => {
-  try {
-    const state = getState(); // Отримуємо поточний Redux-стан
-    const index = state.enemy.enemyIndex; // Витягуємо enemyIndex
-
-    const res = await fetch(ENEMY_URL);
-    const data = await res.json();
-
-    return data[index]; // Тепер завантажується ворог за `enemyIndex`
-  } catch (error) {
-    console.log(error.message);
-    return rejectWithValue(error.message); // Передаємо помилку в Redux state
-  }
-});
 
 const enemySlice = createSlice({
   name: "enemy",
@@ -29,27 +13,13 @@ const enemySlice = createSlice({
   reducers: {
     enemyHealth: (state, action) => {
       if (state.enemyInfo) {
-        state.enemyInfo.health = action.payload; // Правильне оновлення здоров'я ворога
+        state.enemyInfo.health = action.payload; // Оновлюємо здоров'я поточного ворога
       }
     },
     setEnemyIndex: (state, action) => {
       state.enemyIndex = action.payload;
+      state.enemyInfo = enemiesData[action.payload]; // Оновлюємо ворога за індексом
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(getEnemyParams.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(getEnemyParams.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.enemyInfo = action.payload;
-      })
-      .addCase(getEnemyParams.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload; // Тепер помилки зберігаються в `state.error`
-      });
   },
 });
 
