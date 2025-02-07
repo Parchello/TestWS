@@ -15,7 +15,7 @@ const Battle = () => {
   const attackEnemy = () => {
     if (gameOver) return;
 
-    const newEnemyHealth = enemyInfo.health - playerInfo.attack;
+    const newEnemyHealth = enemyInfo.health - playerInfo.attack + enemyInfo.defense;
     dispatch(enemyHealth(newEnemyHealth));
 
     if (newEnemyHealth <= 0) {
@@ -30,7 +30,7 @@ const Battle = () => {
   const attackPlayer = () => {
     if (gameOver) return;
 
-    const newPlayerHealth = playerInfo.health - enemyInfo.attack;
+    const newPlayerHealth = playerInfo.health - enemyInfo.attack + playerInfo.defense;
     dispatch(heroHealth(newPlayerHealth));
 
     if (newPlayerHealth <= 0) {
