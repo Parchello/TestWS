@@ -11,7 +11,7 @@ const HealthBar = () => {
   return (
     <HealthBarWrapper>
       <HealthBarContainer>
-        <HealthBarFill style={{ width: `${healthPercentage}%` }} />
+        <HealthBarFill percentage={healthPercentage} style={{ width: `${healthPercentage}%` }} />
         <HealthBarText>
           {playerInfo.health}/{playerInfo.maxHealth}
         </HealthBarText>
