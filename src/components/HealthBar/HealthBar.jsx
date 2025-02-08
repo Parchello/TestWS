@@ -1,14 +1,17 @@
 import { useSelector } from "react-redux";
 import { HealthBarContainer, HealthBarFill, HealthBarText, HealthBarWrapper } from "./HealthBar.styled.jsx";
 
-// eslint-disable-next-line react/prop-types
 const HealthBar = () => {
   const playerInfo = useSelector((state) => (state.hero.players.length > 0 ? state.hero.players[0] : null));
+
+  if (!playerInfo) return null;
+
+  const healthPercentage = (playerInfo.health / playerInfo.maxHealth) * 100;
 
   return (
     <HealthBarWrapper>
       <HealthBarContainer>
-        <HealthBarFill currentHealth={playerInfo.health} maxHealth={playerInfo.maxHealth} />
+        <HealthBarFill style={{ width: `${healthPercentage}%` }} />
         <HealthBarText>
           {playerInfo.health}/{playerInfo.maxHealth}
         </HealthBarText>
