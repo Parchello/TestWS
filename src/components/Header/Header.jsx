@@ -4,27 +4,17 @@ import castleIcon from "../../assets/castle-icon.png";
 import mapIcon from "../../assets/map-icon.png";
 import { AttributesItem, AttributesList, AvatarIcon, CastleIcon, HeaderContainer, UnitBox } from "./Header.styled.jsx";
 import { useSelector } from "react-redux";
-// import { useEffect } from "react";
-// import { getPlayerParams } from "../../redux/slices/HeroSlice.js";
-// import { getEnemyParams } from "../../redux/slices/EnemySlice.js";
 import { Link, useLocation } from "react-router-dom";
+import HealthBar from "../HealthBar/HealthBar.jsx";
 
 const Header = () => {
   const location = useLocation();
 
   const isCastlePage = location.pathname === "/castle";
 
-  // const dispatch = useDispatch();
   const playerInfo = useSelector((state) => (state.hero.players.length > 0 ? state.hero.players[0] : null));
   const enemyInfo = useSelector((state) => state.enemy.enemyInfo);
 
-  // useEffect(() => {
-  //   dispatch(getPlayerParams());
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(getEnemyParams());
-  // }, [dispatch]);
   return (
     <HeaderContainer>
       <UnitBox>
@@ -34,7 +24,7 @@ const Header = () => {
         {playerInfo && (
           <AttributesList>
             <AttributesItem>Name: {playerInfo.name}</AttributesItem>
-            <AttributesItem>Health: {playerInfo.health}</AttributesItem>
+            <HealthBar currentHealth={playerInfo.health} maxHealth={playerInfo.maxHealth} />
             <AttributesItem>Attack: {playerInfo.attack}</AttributesItem>
           </AttributesList>
         )}
