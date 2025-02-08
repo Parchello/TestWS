@@ -24,7 +24,7 @@ const Header = () => {
         {playerInfo && (
           <AttributesList>
             <AttributesItem>Name: {playerInfo.name}</AttributesItem>
-            <HealthBar currentHealth={playerInfo.health} maxHealth={playerInfo.maxHealth} />
+            <HealthBar />
             <AttributesItem>Attack: {playerInfo.attack}</AttributesItem>
           </AttributesList>
         )}
