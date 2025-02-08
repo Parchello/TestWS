@@ -12,6 +12,7 @@ import villageImg from "../assets/groundpixelMap/village.png";
 import startImg from "../assets/groundpixelMap/start.png";
 import waterImg from "../assets/groundpixelMap/mapWater.jpg";
 import dirt from "../assets/groundpixelMap/dirt.png";
+import fire from "../assets/groundpixelMap/fire.png";
 
 const getTileImage = (tile) => {
   switch (tile) {
@@ -29,6 +30,8 @@ const getTileImage = (tile) => {
       return waterImg; //вода
     case "DI":
       return dirt;
+    case "FI":
+      return fire;
     default:
       return null;
   }

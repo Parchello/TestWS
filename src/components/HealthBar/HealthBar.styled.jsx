@@ -17,7 +17,7 @@ export const HealthBarContainer = styled.div`
 
 export const HealthBarFill = styled.div`
   height: 15px;
-  background-color: ${(props) => (props.percentage > 50 ? "#76c7c0" : props.percentage > 20 ? "#f0ad4e" : "#d9534f")};
+  background-color: ${(props) => (props.percentage > 50 ? "#31bb2a" : props.percentage > 20 ? "#f0ad4e" : "#d9534f")};
   transition: width 0.3s ease-in-out;
 `;
 
