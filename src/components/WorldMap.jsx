@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import { worldMap } from "../data/worldmap";
 import { BtnContainer, MovingBtn } from "./WorldMap.styled";
 import StartModal from "../components/StartModal/StartModal";
+// Імпорт іконок селищь
+import EvilVilImg from "../assets/villagesIconImage/evilVilIcon.jpg";
+import settelmentVilIcon from "../assets/villagesIconImage/settelmentVilIcon.jpg";
+import windVill from "../assets/villagesIconImage/wingVilIcon.jpg";
+import fireVil from "../assets/villagesIconImage/fireVilIcon.jpg";
+import forestVil from "../assets/villagesIconImage/forestVilIcon.jpg";
 
 // Імпорт зображень
 import forestImg from "../assets/groundpixelMap/forest.png";
@@ -14,7 +20,24 @@ import waterImg from "../assets/groundpixelMap/mapWater.jpg";
 import dirt from "../assets/groundpixelMap/dirt.png";
 import fire from "../assets/groundpixelMap/fire.png";
 
-const getTileImage = (tile) => {
+const getTileImage = (tile, uniqueId) => {
+  if (tile === "V") {
+    switch (uniqueId) {
+      case "1-5":
+        return settelmentVilIcon; // Different village image
+      case "2-9":
+        return forestVil;
+      case "2-19":
+        return windVill;
+      case "9-16":
+        return EvilVilImg;
+      case "8-2":
+        return fireVil;
+      default:
+        return villageImg; // Default village image
+    }
+  }
+
   switch (tile) {
     case "F":
       return forestImg; // Ліс
@@ -22,8 +45,6 @@ const getTileImage = (tile) => {
       return mountainImg; // Гори
     case "G":
       return grasslandImg; // Поле
-    case "V":
-      return villageImg; // Село
     case "S":
       return startImg; // Стартова точка
     case "W":
@@ -105,7 +126,7 @@ const WorldMap = () => {
                     </span> // Іконка гравця
                   ) : (
                     <Link to={tileType === "V" ? `/village/${uniqueId}` : `/location/${tileType}`}>
-                      <img src={getTileImage(cell)} alt={cell} className="tile-image" />
+                      <img src={getTileImage(cell, uniqueId)} alt={cell} className="tile-image" />
                     </Link>
                   )}
                 </div>
