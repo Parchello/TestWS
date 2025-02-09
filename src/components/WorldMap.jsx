@@ -19,6 +19,7 @@ import startImg from "../assets/groundpixelMap/start.png";
 import waterImg from "../assets/groundpixelMap/mapWater.jpg";
 import dirt from "../assets/groundpixelMap/dirt.png";
 import fire from "../assets/groundpixelMap/fire.png";
+import wind from "../assets/groundpixelMap/wind.png";
 
 const getTileImage = (tile, uniqueId) => {
   if (tile === "V") {
@@ -53,6 +54,8 @@ const getTileImage = (tile, uniqueId) => {
       return dirt;
     case "FI":
       return fire;
+    case "WI":
+      return wind;
     default:
       return null;
   }
