@@ -1,4 +1,4 @@
-export const playerData = { id: 1, name: "Hero", health: 100, maxHealth: 100, attack: 9, defense: 2 };
+export const playerData = { id: 1, name: "Hero", health: 100, maxHealth: 100, attack: 9, defense: 2, gold: 100 };
 
 export const enemiesData = [
   { id: 1, name: "Fairy", health: 40, maxHealth: 40, attack: 5, defense: 1 },

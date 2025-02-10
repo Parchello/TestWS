@@ -26,6 +26,8 @@ const Header = () => {
             <AttributesItem>Name: {playerInfo.name}</AttributesItem>
             <HealthBar />
             <AttributesItem>Attack: {playerInfo.attack}</AttributesItem>
+            <AttributesItem>Defense: {playerInfo.defense}</AttributesItem>
+            <AttributesItem>Gold: {playerInfo.gold}</AttributesItem>
           </AttributesList>
         )}
       </UnitBox>
