@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { enemiesData } from "../../data/characters";
 
 const initialState = {
-  enemyInfo: enemiesData[1], // Початковий ворог - перший у списку
+  enemyInfo: enemiesData[15], // Початковий ворог - перший у списку
   enemyIndex: 0,
 };
 
